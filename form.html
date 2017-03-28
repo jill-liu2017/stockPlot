@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Stock Price Chart/Predict</title>
+</head>
+<body background="file:///c:\users\J_Liu\bgcolor.jpg">
+    <h1 style="color:blue;"> <center>Welcome To Jill's Stock Plot/Predict Page</center></h1>
+    <h2>>>Generating Stock Price Chart<<</h2>
+    <form id="plot" action="http://localhost:5000/result1" method="POST">
+        <p ><b>Interested Stock Name &nbsp;&nbsp;</b>  <input type="text" name="stockName" /></p>
+        <p ><b>Data Range for Plot &nbsp;&nbsp;</b>  <input type="text" name="stockRange" />&nbsp;&nbsp; <input type = "submit" value = "Plot" />
+        <p><b>(e.g. 3m or 10y)</b> </p>
+    </form>
+
+    <div align="right">
+    <h2>>>Predicting Stock Price<<</h2>
+    <form id ="predict" action="http://localhost:5000/result2" method="POST">
+        <p ><input type="text" name="stockName" /><b>&nbsp;&nbsp;Input Interested Stock </b></p>
+        <p ><input type="text" name="stockRange" /><b>&nbsp;&nbsp;Input Data Range based on </b></p>
+        <p><b>(e.g. 3m or 10y)</b></p>
+        <p ><input type = "submit" value = "Predict" /> &nbsp;&nbsp;<input type="text" name="predictDate" /><b>&nbsp;&nbsp;Input Prediction Date (<i>YYYYMMDD</i>) :</b>
+            </p>
+    </form>
+    </div>
+
+    {% if stockName %}
+    <h2><center>>>Predict Result<<</center></h2>
+    <p><center><b> Predicted Stock Price For "{{ stockName }}" on {{ predictDate }} :<big style="color:blue">&nbsp;&nbsp;{{ predictValue }}</big></b></center></p>
+    {% endif %}
+</body>
+</html>
